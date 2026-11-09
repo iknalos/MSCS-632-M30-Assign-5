@@ -1,0 +1,57 @@
+Ride Sharing System (C++)
+================================================================
+
+1. Riders request rides
+  Maya   requested S101  Standard  Back Bay -> Logan Airport
+  Leo    requested P102  Premium   Cambridge -> Seaport
+  Priya  requested H103  Shared    Fenway -> Harvard Square
+  Leo    requested S104  Standard  Logan Airport -> Quincy
+  Maya   requested P105  Premium   North End -> South Boston
+  Priya  requested H106  Shared    Somerville -> MIT
+  Priya  requested B107  Basic     Brookline -> Back Bay
+
+2. Dispatch (premium rides need a driver rated 4.8 or higher)
+  S101  Standard  -> D1 Carlos (rating 4.9)
+  P102  Premium   -> D2 Aisha (rating 4.8)
+  H103  Shared    -> D3 Ben (rating 4.5)
+  S104  Standard  -> D1 Carlos (rating 4.9)
+  P105  Premium   -> D2 Aisha (rating 4.8)
+  H106  Shared    -> D3 Ben (rating 4.5)
+  B107  Basic     -> D1 Carlos (rating 4.9)
+
+3. All rides in one list: rideDetails() and fare() on each, whatever its type
+  ID    Type      Route                       Distance      Fare
+  S101  Standard  Back Bay -> Logan Airport     4.2 mi    $10.06
+  P102  Premium   Cambridge -> Seaport          5.5 mi    $22.60  top-rated driver
+  H103  Shared    Fenway -> Harvard Square      3.1 mi     $5.66  30% off Standard
+  S104  Standard  Logan Airport -> Quincy       9.8 mi    $20.14
+  P105  Premium   North End -> South Boston     1.6 mi    $15.00  top-rated driver, minimum fare
+  H106  Shared    Somerville -> MIT             2.5 mi     $4.90  30% off Standard
+  B107  Basic     Brookline -> Back Bay         3.0 mi     $4.50
+  All fares: $82.86
+
+4. Drivers (getDriverInfo)
+  D1  Carlos  rating 4.9   3 rides   earned $34.70
+      rides: S101, S104, B107
+  D2  Aisha   rating 4.8   2 rides   earned $37.60
+      rides: P102, P105
+  D3  Ben     rating 4.5   2 rides   earned $10.56
+      rides: H103, H106
+
+5. Riders (viewRides)
+  R1  Maya: 2 rides, total $25.06
+      S101  Standard  Back Bay -> Logan Airport     4.2 mi    $10.06
+      P105  Premium   North End -> South Boston     1.6 mi    $15.00  top-rated driver, minimum fare
+  R2  Leo: 2 rides, total $42.74
+      P102  Premium   Cambridge -> Seaport          5.5 mi    $22.60  top-rated driver
+      S104  Standard  Logan Airport -> Quincy       9.8 mi    $20.14
+  R3  Priya: 3 rides, total $15.06
+      H103  Shared    Fenway -> Harvard Square      3.1 mi     $5.66  30% off Standard
+      H106  Shared    Somerville -> MIT             2.5 mi     $4.90  30% off Standard
+      B107  Basic     Brookline -> Back Bay         3.0 mi     $4.50
+
+6. Encapsulation
+  Carlos: rating 6.0 rejected (must be 1.0 to 5.0), still 4.9
+  Ben: rating 4.6 accepted, now 4.6
+  Ride S108 with -3.0 miles rejected: distance must be greater than 0
+  Added a ride to a copy of Aisha's list: the copy has 3, Aisha still has 2

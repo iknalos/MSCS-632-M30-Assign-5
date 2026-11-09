@@ -1,0 +1,2 @@
+$ diff <(tail -n +2 output/cpp_output.txt) <(tail -n +2 output/smalltalk_output.txt)
+identical: 56 lines after the header match
